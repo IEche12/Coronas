@@ -10,6 +10,9 @@
             background: linear-gradient(to bottom, #87ceeb, #f5deb3);
             text-align: center;
             padding: 20px;
+            position: relative;
+            min-height: 100vh;
+            margin: 0;
         }
 
         h1 {
@@ -42,9 +45,47 @@
             border-radius: 5px;
         }
 
-            button:hover {
-                background-color: #e63900;
+        button:hover {
+            background-color: #e63900;
+        }
+
+        /* Estilo específico para Dolares.png */
+        .dollars-image {
+            position: absolute;
+            top: 30%;
+            left: 100px;
+            transform: translateY(-50%);
+            width: 200px;
+        }
+
+        /* Estilo específico para Corona.png */
+        .crown-image {
+            position: absolute;
+            top: 200px;
+            right: 30px;
+            transform: translateY(-50%);
+            width: 250px;
+            
+        }
+
+        /* Estilo específico para neymar.gif */
+        .neymar-gif {
+            position: absolute;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            max-width: 200px;
+            animation: bounce 2s infinite; /* Animación */
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0);
             }
+            50% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
     </style>
 </head>
 <body>
@@ -55,7 +96,14 @@
         <button onclick="convertir()">Convertir</button>
         <p id="resultado"></p>
     </div>
-    <script>function convertir() {
+
+    <!-- Imágenes con estilos únicos -->
+    <img src="Dolares.png" alt="Dólares" class="dollars-image">
+    <img src="Corona.png" alt="Corona" class="crown-image">
+    <img src="neymar.gif" alt="Neymar GIF" class="neymar-gif">
+
+    <script>
+        function convertir() {
             const tasaDeCambio = 1.44; // 1 USD = 1.44 Coronas
             const usd = parseFloat(document.getElementById("usdInput").value);
             if (isNaN(usd) || usd <= 0) {
@@ -64,6 +112,7 @@
                 const coronas = usd * tasaDeCambio;
                 document.getElementById("resultado").innerText = `Equivale a ${coronas.toFixed(2)} Coronas.`;
             }
-        }</script>
+        }
+    </script>
 </body>
 </html>
